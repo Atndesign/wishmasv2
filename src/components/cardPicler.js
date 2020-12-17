@@ -1,62 +1,89 @@
-import React, { Component } from "react";
+import React from "react";
 import Slider from "react-slick";
 
-export default class MultipleItems extends Component {
-  render() {
-    const settings = {
-      dots: true,
-      infinite: true,
-      speed: 500,
-      slidesToShow: 3,
-      slidesToScroll: 3,
-    };
-    return (
-      <div className="">
-        <link
-          rel="stylesheet"
-          type="text/css"
-          charset="UTF-8"
-          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
-        />
-        <link
-          rel="stylesheet"
-          type="text/css"
-          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
-        />
-        <style>{cssstyle}</style>
-        <h2> Multiple items </h2>
-        <Slider {...settings}>
-          <div>
-            <h3>1</h3>
-          </div>
-          <div>
-            <h3>2</h3>
-          </div>
-          <div>
-            <h3>3</h3>
-          </div>
-          <div>
-            <h3>4</h3>
-          </div>
-          <div>
-            <h3>5</h3>
-          </div>
-          <div>
-            <h3>6</h3>
-          </div>
-          <div>
-            <h3>7</h3>
-          </div>
-          <div>
-            <h3>8</h3>
-          </div>
-          <div>
-            <h3>9</h3>
-          </div>
-        </Slider>
-      </div>
-    );
-  }
+export default function MultipleItems(props) {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    arrows: true,
+    responsive: [
+      {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+  return (
+    <div className="picker">
+      <link
+        rel="stylesheet"
+        type="text/css"
+        charset="UTF-8"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+      />
+      <link
+        rel="stylesheet"
+        type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
+      />
+      <style>{cssstyle}</style>
+      <p className="picker__title"> Choose your template </p>
+      <Slider {...settings}>
+        {props.cardsList.map((card) => {
+          return (
+            <article className="slider__article">
+              <div
+                className="img__container"
+                style={{ backgroundImage: `url(./img/cards/${card.name}.jpg)` }}
+              >
+                <div
+                  className="article__text"
+                  style={{ backgroundColor: card.color }}
+                >
+                  <p className="card__title">Hello Sandrine! 🎅</p>
+                  <p className="card__subtitle">
+                    Kevin has a special message for you:
+                  </p>
+                  <p className="card__text">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Quia adipisci eius necessitatibus harum nam ex velit alias,
+                    voluptatum dolores modi officia assumenda eos saepe fuga
+                    iure aut ipsum aliquid? Harum!
+                  </p>
+                  <svg
+                    className="slider__wave"
+                    width="100%"
+                    height="81"
+                    viewBox="0 0 100% 81"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M0 67.3527L12.2083 71.8429C24.4167 76.333 48.8333 85.3134 73.25 78.5781C97.6667 71.8429 122.083 49.392 146.5 42.6567C170.917 35.9214 195.333 44.9018 219.75 44.9018C244.167 44.9018 268.583 35.9214 280.792 31.4312L293 26.9411V0H280.792C268.583 0 244.167 0 219.75 0C195.333 0 170.917 0 146.5 0C122.083 0 97.6667 0 73.25 0C48.8333 0 24.4167 0 12.2083 0H0V67.3527Z"
+                      fill={card.color}
+                    />
+                  </svg>
+                </div>
+              </div>
+            </article>
+          );
+        })}
+      </Slider>
+    </div>
+  );
 }
 
 const cssstyle = `

@@ -30,11 +30,50 @@
     font-size: 18px;
     background-color: $primary;
   }
+ 
   
+
 }
-h3{
-  color: red;
+.picker__title{
+  font-weight: 900;
+  font-size: 24px;
 }
+.slider__article{
+  display: flex !important;
+  justify-content: center;
+  padding: $spacer;
+  min-height: 359px;
+
+  .article__text{
+    position: relative;
+    padding: $spacer;
+  }
+  .card__title{
+    font-size: 14px;
+    font-weight: 900;
+  }
+  .card__subtitle{
+    font-size: 12px;
+    font-weight: 900;
+  }
+  .card__text{
+    font-size: 10px;
+    font-weight: 400;
+  }
+}
+.img__container{
+  background-size: cover;
+}
+.slider__wave{
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: -55px;
+}
+.slider__img{
+  margin: 0;
+}
+
 @media only screen and (min-width: 470px){
   .card-maker{
     max-width: 350px;
