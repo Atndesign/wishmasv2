@@ -8,6 +8,9 @@
     flex-direction: column;
     justify-content: center;
   }
+  .homepage__right{
+    max-width: 804px;
+  }
   .left__content{
     text-align: center;
   }
@@ -60,6 +63,9 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
+    }
+    .homepage__subtitle{
+      margin: 0;
     }
     .homepage__text{
       font-weight: 900;

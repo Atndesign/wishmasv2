@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 const HomePage = () => {
   return (
-    <main className="homepage">
+    <main className="homepage col-12">
       <div className="row">
         <div className="col-lg-6">
           <div className="homepage__left">
@@ -25,7 +25,7 @@ const HomePage = () => {
           </p>
           <div className="button-container">
             <p className="homepage__button">
-              <Link to="/create">Home</Link>
+              <Link to="/create">Create my card</Link>
             </p>
           </div>
         </div>
