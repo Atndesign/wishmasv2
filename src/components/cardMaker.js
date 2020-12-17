@@ -1,11 +1,14 @@
-import React from "react";
-import MultipleItems from "./cardPicler";
+import React, { useState } from "react";
 import Header from "./header";
+import MultipleItems from "./cardPicler";
 
-const CardMakerForm = () => {
+const CardMakerForm = (props) => {
+  const [step, setStep] = useState(0);
+
+  const nextStep = () => {};
+
   return (
     <main className="card-main col-lg-6">
-      <Header />
       <div className="card-maker">
         <label htmlFor="sender" className="card-maker__label">
           What’s your name ?
@@ -31,7 +34,11 @@ const CardMakerForm = () => {
         />
         <button className="card-maker__btn">Next step</button>
       </div>
-      <MultipleItems />
+      {(window.innerWidth < 995) & (step === 1) ? (
+        <MultipleItems cardsList={props.cardsOption} />
+      ) : (
+        ""
+      )}
     </main>
   );
 };

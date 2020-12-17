@@ -2,19 +2,68 @@ import "./assets/css/App.css";
 import HomePage from "./components/homepage";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import CardMaker from "./components/cardMaker";
+import Header from "./components/header";
+import MultipleItems from "./components/cardPicler";
+
+const cardsOption = [
+  {
+    name: "bg1",
+    color: "#172830",
+  },
+  {
+    name: "bg2",
+    color: "#4B4B4B",
+  },
+  {
+    name: "bg3",
+    color: "#3E63A8",
+  },
+  {
+    name: "bg4",
+    color: "#978463",
+  },
+  {
+    name: "bg5",
+    color: "#A4A083",
+  },
+  {
+    name: "bg6",
+    color: "#4E6244",
+  },
+  {
+    name: "bg7",
+    color: "#1A2C38",
+  },
+  {
+    name: "bg8",
+    color: "#BD8844",
+  },
+];
 
 function App() {
   return (
     <div className="App">
       <Router>
-        <Switch>
-          <Route path="/" exact>
-            <HomePage />
-          </Route>
-          <Route path="/create" exact>
-            <CardMaker />
-          </Route>
-        </Switch>
+        <Header />
+        <div className="container">
+          <div className="row">
+            <Switch>
+              <Route path="/" exact>
+                <HomePage />
+              </Route>
+              <Route path="/create" exact>
+                <CardMaker cardsOption={cardsOption} />
+                <div className="col-lg-6">
+                  {window.innerWidth >= 995 ? (
+                    <MultipleItems cardsList={cardsOption} />
+                  ) : (
+                    ""
+                  )}
+                </div>
+              </Route>
+            </Switch>
+          </div>
+        </div>
       </Router>
     </div>
   );
