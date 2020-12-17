@@ -1,0 +1,33 @@
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+@import "./_partials/fonts";
+@import "./_partials/variables";
+@import "./_partials/responsive.scss";
+@import "./_partials/responsiveClasses.scss";
+
+//Default
+a,
+p,
+h1,
+h2,
+label {
+    font-family: $font-family-base;
+    color: white;
+}
+
+body {
+    background-color: #000000;
+    padding: $spacer * 2;
+}
+
+.App{
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+  justify-content: space-around;
+}
+
+//Components
+@import "./components/header.scss";
+@import "./components/homepage.scss";
+
+//Common

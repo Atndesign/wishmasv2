@@ -1,0 +1,29 @@
+.homepage{
+  .homepage__img{
+    margin-bottom: $spacer * 2;
+  }
+  .homepage__title{
+    font-size: 64px;
+    font-weight: 900;
+  }
+  .homepage__subtitle{
+    font-size: 36px;
+    margin-bottom: $spacer * 4;
+  }
+  .button-container{
+    display: flex;
+    justify-content: center;
+  }
+  .homepage__button{
+    color: black;
+    padding: (10/16) * $spacer $spacer;
+    background-color: $primary;
+    text-decoration: none;
+
+    &:hover{
+    text-decoration: none;
+    color: white;
+    background-color: darken($color: $primary, $amount: 15);
+    }
+  }
+}
