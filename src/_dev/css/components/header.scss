@@ -1,13 +1,18 @@
 .header{
-  padding-top: $spacer * 2  ;
-  margin-bottom: $spacer * 4;
-  .header__title{
-    text-align: center;
-    font-weight: 800;
-    margin-bottom: $spacer / 2;
-  }
-  .header__subtitle{
-    font-size: 18px;
-    text-align: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: $spacer * 2;
+  .header__btn{
+    display: flex;
+    align-items: flex-end;
+    color: #BEBEBE;
+    font-size: 14px;
+    font-weight: 900;
+    background: none;
+    padding: 0;
+    border: none;
+    &:hover{
+      color: white;
+    }
   }
 }

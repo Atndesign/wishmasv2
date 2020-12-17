@@ -1,6 +1,7 @@
 import "./assets/css/App.css";
 import HomePage from "./components/homepage";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import CardMaker from "./components/cardMaker";
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
             <HomePage />
           </Route>
           <Route path="/create" exact>
-            <div>HJellos</div>
+            <CardMaker />
           </Route>
         </Switch>
       </Router>
