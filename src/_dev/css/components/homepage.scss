@@ -1,6 +1,15 @@
 .homepage{
+  width: 100%;
   .homepage__img{
     margin-bottom: $spacer * 2;
+  }
+  .homepage__left{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .left__content{
+    text-align: center;
   }
   .homepage__title{
     font-size: 64px;
@@ -24,6 +33,45 @@
     text-decoration: none;
     color: white;
     background-color: darken($color: $primary, $amount: 15);
+    }
+  }
+  .homepage__text{
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 992px){
+  .homepage{
+    padding: $spacer * 4;
+    .homepage__img{
+      width: 100%;
+      height: 430px;
+    }
+    .homepage__left{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      .left__content{
+        width: 100%;
+        text-align: center;
+      }
+    }
+    .homepage__right{
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+    .homepage__text{
+      font-weight: 900;
+      font-size: 64px;
+      display: block;
+      margin-bottom: $spacer * 4;
+    }
+    .button-container{
+      justify-content: flex-start;
+      .homepage__button{
+        font-size: 36px;
+      }
     }
   }
 }
