@@ -51,16 +51,11 @@ export default function MultipleItems(props) {
                   className="article__text"
                   style={{ backgroundColor: card.color }}
                 >
-                  <p className="card__title">Hello Sandrine! 🎅</p>
+                  <p className="card__title">Hello {props.cardInfo[1]}! 🎅</p>
                   <p className="card__subtitle">
-                    Kevin has a special message for you:
+                    {props.cardInfo[0]} has a special message for you:
                   </p>
-                  <p className="card__text">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Quia adipisci eius necessitatibus harum nam ex velit alias,
-                    voluptatum dolores modi officia assumenda eos saepe fuga
-                    iure aut ipsum aliquid? Harum!
-                  </p>
+                  <p className="card__text">{props.cardInfo[2]}</p>
                   <svg
                     className="slider__wave"
                     width="100%"

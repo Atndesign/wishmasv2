@@ -44,14 +44,14 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Header />
-        <div className="container">
-          <div className="row">
-            <Switch>
-              <Route path="/" exact>
-                <HomePage />
-              </Route>
-              <Route path="/create" exact>
+        <Switch>
+          <Route path="/" exact>
+            <HomePage />
+          </Route>
+          <Route path="/create" exact>
+            <Header />
+            <div className="container">
+              <div className="row">
                 <CardMaker cardsOption={cardsOption} />
                 <div className="col-lg-6">
                   {window.innerWidth >= 995 ? (
@@ -60,10 +60,10 @@ function App() {
                     ""
                   )}
                 </div>
-              </Route>
-            </Switch>
-          </div>
-        </div>
+              </div>
+            </div>
+          </Route>
+        </Switch>
       </Router>
     </div>
   );
