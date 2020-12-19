@@ -2,35 +2,18 @@ import React, { useState } from "react";
 import MultipleItems from "./cardPicler";
 
 const CardMakerForm = (props) => {
-  const [step, setStep] = useState(0);
   const [sender, setSender] = useState("");
   const [receiver, setReceiver] = useState("");
   const [message, setMessage] = useState("");
-
-  const nextStep = () => {
-    if ((sender !== "", receiver !== "", message !== "")) {
-      let temp = step;
-      temp += 1;
-      setStep(temp);
-    }
-  };
 
   const handleInput = (val, variable) => {
     variable(val);
   };
   //TODO make the last step work
 
-  const lastStep = () => {
-    let temp = step;
-    if (!temp - 1 < 0) {
-      temp -= 1;
-      setStep(temp);
-    }
-  };
-
   return (
     <main className="card-main col-lg-6">
-      {step === 0 ? (
+      {props.step === 0 ? (
         <div className="card-maker">
           <div className="input__container">
             <label htmlFor="sender" className="card-maker__label">
@@ -93,7 +76,7 @@ const CardMakerForm = (props) => {
 
           <button
             className="btn--small"
-            onClick={(e) => nextStep()}
+            onClick={(e) => props.nextStep(sender, receiver, message)}
             disabled={sender === "" || receiver === "" || message === ""}
           >
             Next step
@@ -102,12 +85,12 @@ const CardMakerForm = (props) => {
       ) : (
         ""
       )}
-      {(window.innerWidth < 995) & (step >= 1) ? (
+      {(window.innerWidth < 995) & (props.step >= 1) ? (
         <MultipleItems
           cardInfo={[sender, receiver, message]}
           cardsList={props.cardsOption}
-          nextStep={nextStep}
-          step={step}
+          nextStep={props.nextStep}
+          step={props.step}
         />
       ) : (
         ""

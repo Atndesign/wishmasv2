@@ -1,4 +1,5 @@
 import "./assets/css/App.css";
+import React, { useState } from "react";
 import HomePage from "./components/homepage";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import CardMaker from "./components/cardMaker";
@@ -41,6 +42,23 @@ const cardsOption = [
 ];
 
 function App() {
+  const [step, setStep] = useState(0);
+
+  const nextStep = (sender, receiver, message) => {
+    if ((sender !== "", receiver !== "", message !== "")) {
+      let temp = step;
+      temp += 1;
+      setStep(temp);
+    }
+  };
+
+  const lastStep = () => {
+    let temp = step;
+    if (!temp - 1 < 0) {
+      temp -= 1;
+      setStep(temp);
+    }
+  };
   return (
     <div className="App">
       <Router>
@@ -52,7 +70,11 @@ function App() {
             <Header />
             <div className="container">
               <div className="row">
-                <CardMaker cardsOption={cardsOption} />
+                <CardMaker
+                  cardsOption={cardsOption}
+                  nextStep={nextStep}
+                  step={step}
+                />
                 <div className="col-lg-6">
                   {window.innerWidth >= 995 ? (
                     <MultipleItems cardsList={cardsOption} />
