@@ -67,10 +67,12 @@ const CardMakerForm = (props) => {
       ) : (
         ""
       )}
-      {(window.innerWidth < 995) & (step === 1) ? (
+      {(window.innerWidth < 995) & (step >= 1) ? (
         <MultipleItems
           cardInfo={[sender, receiver, message]}
           cardsList={props.cardsOption}
+          nextStep={nextStep}
+          step={step}
         />
       ) : (
         ""
