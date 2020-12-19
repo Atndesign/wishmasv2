@@ -46,8 +46,10 @@
   font-weight: 900;
   font-size: 18px;
   background-color: $primary;
+  max-width: 350px;
+  margin: $spacer auto;
   &:disabled{
-   opacity: 0.3;
+   opacity: 0.1;
   }
 }
 .picker__title{
@@ -92,6 +94,8 @@
 .slider__img{
   margin: 0;
 }
+
+
 .slider__overlay{
   position: absolute;
   width: 100%;

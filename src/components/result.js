@@ -5,10 +5,13 @@ import domtoimage from "dom-to-image";
 const Result = (props) => {
   const [url, setUrl] = useState("");
 
+  const options = {
+    quality: 0.99,
+  };
   const downloadFile = () => {
     var node = document.getElementById("capture");
     domtoimage
-      .toPng(node)
+      .toPng(node, options)
       .then(function (dataUrl) {
         var img = new Image();
         img.src = dataUrl;

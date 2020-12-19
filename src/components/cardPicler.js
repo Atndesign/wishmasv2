@@ -27,17 +27,18 @@ export default function MultipleItems(props) {
     };
     setCardInfos(itemInfos);
     e.currentTarget.style.opacity = 0.5;
-    props.nextStep(2);
   };
 
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     arrows: true,
+    slidesToShow: 3,
+    slidesToScroll: 3,
     responsive: [
       {
-        breakpoint: 992,
+        breakpoint: 995,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
@@ -114,6 +115,13 @@ export default function MultipleItems(props) {
               );
             })}
           </Slider>
+          <button
+            className="btn--small"
+            onClick={(e) => props.nextStep(2)}
+            disabled={selectedCard === ""}
+          >
+            Next step
+          </button>
         </div>
       ) : (
         <Result cardInfo={props.cardInfo} infos={cardInfos} />

@@ -12,7 +12,7 @@ const CardMakerForm = (props) => {
   //TODO make the last step work
 
   return (
-    <main className="card-main col-lg-6">
+    <main className="card-main col-lg-12">
       {props.step === 0 ? (
         <div className="card-maker">
           <div className="input__container">
@@ -85,7 +85,7 @@ const CardMakerForm = (props) => {
       ) : (
         ""
       )}
-      {(window.innerWidth < 995) & (props.step >= 1) ? (
+      {props.step >= 1 ? (
         <MultipleItems
           cardInfo={[sender, receiver, message]}
           cardsList={props.cardsOption}

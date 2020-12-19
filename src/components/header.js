@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Header = () => {
+const Header = (props) => {
   return (
     <header className="header">
       <Link to="/">
@@ -13,7 +13,9 @@ const Header = () => {
           height="40"
         />
       </Link>
-      <button className="header__btn">Previous</button>
+      <button className="header__btn" onClick={(e) => props.lastStep()}>
+        Previous
+      </button>
     </header>
   );
 };
