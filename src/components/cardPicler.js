@@ -21,7 +21,6 @@ export default function MultipleItems(props) {
   const selectItem = (e) => {
     clearSelection();
     setSelectedCard(e.target);
-    console.log(e.currentTarget.childNodes[0].style.backgroundImage);
     let itemInfos = {
       name: e.currentTarget.childNodes[0].style.backgroundImage,
       color: e.currentTarget.childNodes[0].children[0].style.backgroundColor,

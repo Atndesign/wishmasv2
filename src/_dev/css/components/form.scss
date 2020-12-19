@@ -3,6 +3,12 @@
 }
 .card-maker{
   margin: 0 auto;
+  .input__container{
+    margin-bottom: $spacer * 2;
+    &.--last{
+      margin-bottom: $spacer * 4;
+    }
+  }
   .card-maker__label{
     font-family: Roboto;
     font-style: normal;
@@ -14,12 +20,15 @@
     background-color: transparent;
     padding: $spacer / 2;
     border: 2px solid #A9A9A9;
-    margin-bottom: $spacer * 2;
     color: #A9A9A9;
     width: 100%;
-    &.--last{
-      margin-bottom: $spacer * 4;
+    margin-bottom: $spacer / 2;
+    &.--err{
+      border-right: red 2px solid;
     }
+  }
+  .card-maker__small{
+    color: #ff3e3e;
   }
   
  
@@ -37,6 +46,9 @@
   font-weight: 900;
   font-size: 18px;
   background-color: $primary;
+  &:disabled{
+   opacity: 0.3;
+  }
 }
 .picker__title{
   font-weight: 900;
