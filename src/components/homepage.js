@@ -1,7 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import gsap from "gsap";
 
 const HomePage = () => {
+  useEffect(() => {
+    gsap.from(".homepage__img", { x: 300, duration: 1, opacity: 0 });
+    gsap.from(".left__content", {
+      y: 200,
+      duration: 1,
+      delay: 1,
+      ease: "sine",
+      opacity: 0,
+    }); //wait 1 second
+    gsap.from(".button-container", {
+      y: 200,
+      duration: 2,
+      delay: 1,
+      ease: "sine",
+      opacity: 0,
+    }); //wait 1 second
+  }, []);
+
   return (
     <main className="homepage col-12">
       <div className="row">
