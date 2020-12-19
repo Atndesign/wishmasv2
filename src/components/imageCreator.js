@@ -2,10 +2,11 @@ import React from "react";
 
 const ImageCreator = (props) => {
   return (
-    <article className="slider__article --small" id="capture">
+    <article className="slider__article --small">
       <div
         className="img__container"
         style={{ backgroundImage: props.infos.name }}
+        id="capture"
       >
         <div
           className="article__text"

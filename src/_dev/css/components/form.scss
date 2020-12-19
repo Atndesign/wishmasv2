@@ -21,18 +21,22 @@
       margin-bottom: $spacer * 4;
     }
   }
-  .card-maker__btn{
-    padding: (10/16) * $spacer;
-    width: 100%;
-    border: none;
-    color: black;
-    font-weight: 900;
-    font-size: 18px;
-    background-color: $primary;
-  }
+  
  
   
 
+}
+
+.btn--small{
+  padding: (10/16) * $spacer;
+  width: 100%;
+  border: none;
+  display: block;
+  text-align: center;
+  color: black;
+  font-weight: 900;
+  font-size: 18px;
+  background-color: $primary;
 }
 .picker__title{
   font-weight: 900;

@@ -60,7 +60,7 @@ const CardMakerForm = (props) => {
             className="card-maker__input --last"
             onChange={(e) => handleInput(e.target.value, setMessage)}
           />
-          <button className="card-maker__btn" onClick={(e) => nextStep()}>
+          <button className="btn--small" onClick={(e) => nextStep()}>
             Next step
           </button>
         </div>
