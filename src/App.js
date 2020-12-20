@@ -75,6 +75,7 @@ function App() {
               )}
               {step === 1 && window.innerWidth < 995 ? (
                 <CardPicker
+                  step={step}
                   nextStep={nextStep}
                   cardInfo={[infos.sender, infos.receiver, infos.message]}
                 />

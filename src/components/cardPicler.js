@@ -81,14 +81,6 @@ export default function CardPicker(props) {
         },
       },
       {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          arrows: false,
-        },
-      },
-      {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
