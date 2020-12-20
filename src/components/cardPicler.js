@@ -33,9 +33,10 @@ export default function MultipleItems(props) {
     dots: false,
     infinite: true,
     speed: 500,
-    arrows: true,
+    arrows: false,
     slidesToShow: 3,
     slidesToScroll: 3,
+    centerMode: true,
     responsive: [
       {
         breakpoint: 995,

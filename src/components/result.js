@@ -47,6 +47,9 @@ const Result = (props) => {
           srcSet="./img/dl-btn.svg"
         ></img>
       </a>
+      <a href={"/"} className="btn--small --hollow">
+        Make another card
+      </a>
     </div>
   );
 };
