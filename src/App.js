@@ -4,55 +4,32 @@ import HomePage from "./components/homepage";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import CardMaker from "./components/cardMaker";
 import Header from "./components/header";
-import MultipleItems from "./components/cardPicler";
-
-const cardsOption = [
-  {
-    name: "bg1",
-    color: "#172830",
-  },
-  {
-    name: "bg2",
-    color: "#4B4B4B",
-  },
-  {
-    name: "bg3",
-    color: "#3E63A8",
-  },
-  {
-    name: "bg4",
-    color: "#978463",
-  },
-  {
-    name: "bg5",
-    color: "#A4A083",
-  },
-  {
-    name: "bg6",
-    color: "#4E6244",
-  },
-  {
-    name: "bg7",
-    color: "#1A2C38",
-  },
-  {
-    name: "bg8",
-    color: "#BD8844",
-  },
-];
+import CardPicker from "./components/cardPicler";
+import Result from "./components/result";
 
 function App() {
   const [step, setStep] = useState(0);
-  const [sender, setSender] = useState("");
-  const [receiver, setReceiver] = useState("");
-  const [message, setMessage] = useState("");
+  const [infos, setInfos] = useState({
+    sender: "",
+    receiver: "",
+    message: "",
+    img: "",
+    color: "",
+  });
 
-  const nextStep = (sender, receiver, message) => {
-    if ((sender !== "", receiver !== "", message !== "")) {
-      let temp = step;
-      temp += 1;
-      setStep(temp);
-    }
+  const setInformations = (values) => {
+    let temp = infos;
+    values.forEach((value) => {
+      temp[value.key] = value.value;
+    });
+    setInfos(temp);
+  };
+
+  const nextStep = (object) => {
+    setInformations(object);
+    let temp = step;
+    temp += 1;
+    setStep(temp);
   };
 
   const lastStep = () => {
@@ -72,19 +49,39 @@ function App() {
           <Route path="/create" exact>
             <Header lastStep={lastStep} />
             <div className="container">
-              <div className="row">
+              {step === 0 && window.innerWidth < 994 ? (
                 <CardMaker
-                  cardsOption={cardsOption}
                   nextStep={nextStep}
-                  step={step}
-                  setSender={setSender}
-                  sender={sender}
-                  setReceiver={setReceiver}
-                  receiver={receiver}
-                  setMessage={setMessage}
-                  message={message}
+                  cardInfo={[infos.sender, infos.receiver, infos.message]}
                 />
-              </div>
+              ) : (
+                ""
+              )}
+              {step < 2 && window.innerWidth > 995 ? (
+                <main className="row">
+                  <CardMaker
+                    nextStep={nextStep}
+                    step={step}
+                    cardInfo={[infos.sender, infos.receiver, infos.message]}
+                  />
+                  <CardPicker
+                    step={step}
+                    nextStep={nextStep}
+                    cardInfo={[infos.sender, infos.receiver, infos.message]}
+                  />
+                </main>
+              ) : (
+                ""
+              )}
+              {step === 1 && window.innerWidth < 995 ? (
+                <CardPicker
+                  nextStep={nextStep}
+                  cardInfo={[infos.sender, infos.receiver, infos.message]}
+                />
+              ) : (
+                ""
+              )}
+              {step === 2 ? <Result infos={infos} /> : ""}
             </div>
           </Route>
         </Switch>

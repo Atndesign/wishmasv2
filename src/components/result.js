@@ -32,24 +32,28 @@ const Result = (props) => {
         Here your card! click on download, to have it and send it to the person
         you love
       </p>
-      <ImageCreator cardInfo={props.cardInfo} infos={props.infos} />
-      <a
-        href={url}
-        disabled={url !== "" ? false : true}
-        className="btn--small"
-        onClick={(e) => downloadFile()}
-        download={`card`}
-      >
-        Download{" "}
-        <img
-          src="./img/dl-btn.png"
-          alt="download file"
-          srcSet="./img/dl-btn.svg"
-        ></img>
-      </a>
-      <a href={"/"} className="btn--small --hollow">
-        Make another card
-      </a>
+      <div className="result__container">
+        <ImageCreator infos={props.infos} />
+        <div className="container__controls">
+          <a
+            href={url}
+            disabled={url !== "" ? false : true}
+            className="btn--small"
+            onClick={(e) => downloadFile()}
+            download={`card`}
+          >
+            Download{" "}
+            <img
+              src="./img/dl-btn.png"
+              alt="download file"
+              srcSet="./img/dl-btn.svg"
+            ></img>
+          </a>
+          <a href={"/"} className="btn--small --hollow">
+            Make another card
+          </a>
+        </div>
+      </div>
     </div>
   );
 };

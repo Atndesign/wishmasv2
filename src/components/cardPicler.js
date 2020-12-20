@@ -1,8 +1,42 @@
 import React, { useState } from "react";
 import Slider from "react-slick";
-import Result from "./result";
 
-export default function MultipleItems(props) {
+const cardsList = [
+  {
+    name: "bg1",
+    color: "#172830",
+  },
+  {
+    name: "bg2",
+    color: "#4B4B4B",
+  },
+  {
+    name: "bg3",
+    color: "#3E63A8",
+  },
+  {
+    name: "bg4",
+    color: "#978463",
+  },
+  {
+    name: "bg5",
+    color: "#A4A083",
+  },
+  {
+    name: "bg6",
+    color: "#4E6244",
+  },
+  {
+    name: "bg7",
+    color: "#1A2C38",
+  },
+  {
+    name: "bg8",
+    color: "#BD8844",
+  },
+];
+
+export default function CardPicker(props) {
   const [selectedCard, setSelectedCard] = useState("");
   const [cardInfos, setCardInfos] = useState({});
 
@@ -34,9 +68,10 @@ export default function MultipleItems(props) {
     infinite: true,
     speed: 500,
     arrows: false,
-    slidesToShow: 3,
-    slidesToScroll: 3,
+    slidesToShow: 2,
+    slidesToScroll: 2,
     centerMode: true,
+    arrows: true,
     responsive: [
       {
         breakpoint: 995,
@@ -46,103 +81,128 @@ export default function MultipleItems(props) {
         },
       },
       {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          arrows: false,
+        },
+      },
+      {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          arrows: false,
         },
       },
     ],
   };
   return (
-    <div>
-      {props.step === 1 ? (
-        <div className="picker">
-          <link
-            rel="stylesheet"
-            type="text/css"
-            charset="UTF-8"
-            href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
-          />
-          <link
-            rel="stylesheet"
-            type="text/css"
-            href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
-          />
-          <style>{cssstyle}</style>
-          <p className="picker__title"> Choose your template </p>
-          <Slider {...settings}>
-            {props.cardsList.map((card) => {
-              return (
-                <article
-                  className="slider__article"
-                  onClick={(e) => selectItem(e)}
+    <div className="col-lg-6">
+      <div className="picker">
+        <link
+          rel="stylesheet"
+          type="text/css"
+          charSet="UTF-8"
+          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+        />
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
+        />
+        <p className="picker__title"> Choose your template </p>
+        <Slider {...settings}>
+          {cardsList.map((card) => {
+            return (
+              <article
+                className="slider__article"
+                onClick={(e) => selectItem(e)}
+                key={card.name}
+              >
+                <div
+                  className="img__container"
+                  style={{
+                    backgroundImage: `url(./img/cards/${card.name}.jpg)`,
+                  }}
                 >
                   <div
-                    className="img__container"
-                    style={{
-                      backgroundImage: `url(./img/cards/${card.name}.jpg)`,
-                    }}
+                    className="article__text"
+                    style={{ backgroundColor: card.color }}
                   >
-                    <div
-                      className="article__text"
-                      style={{ backgroundColor: card.color }}
+                    <p className="card__title">Hello {props.cardInfo[1]}! 🎅</p>
+                    <p className="card__subtitle">
+                      {props.cardInfo[0]} has a special message for you:
+                    </p>
+                    <p className="card__text">{props.cardInfo[2]}</p>
+                    <svg
+                      className="slider__wave"
+                      width="100%"
+                      height="81"
+                      viewBox="0 0 100% 81"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
                     >
-                      <p className="card__title">
-                        Hello {props.cardInfo[1]}! 🎅
-                      </p>
-                      <p className="card__subtitle">
-                        {props.cardInfo[0]} has a special message for you:
-                      </p>
-                      <p className="card__text">{props.cardInfo[2]}</p>
-                      <svg
-                        className="slider__wave"
-                        width="100%"
-                        height="81"
-                        viewBox="0 0 100% 81"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          clip-rule="evenodd"
-                          d="M0 67.3527L12.2083 71.8429C24.4167 76.333 48.8333 85.3134 73.25 78.5781C97.6667 71.8429 122.083 49.392 146.5 42.6567C170.917 35.9214 195.333 44.9018 219.75 44.9018C244.167 44.9018 268.583 35.9214 280.792 31.4312L293 26.9411V0H280.792C268.583 0 244.167 0 219.75 0C195.333 0 170.917 0 146.5 0C122.083 0 97.6667 0 73.25 0C48.8333 0 24.4167 0 12.2083 0H0V67.3527Z"
-                          fill={card.color}
-                        />
-                      </svg>
-                    </div>
+                      <path
+                        fillRule="evenodd"
+                        clipRule="evenodd"
+                        d="M0 67.3527L12.2083 71.8429C24.4167 76.333 48.8333 85.3134 73.25 78.5781C97.6667 71.8429 122.083 49.392 146.5 42.6567C170.917 35.9214 195.333 44.9018 219.75 44.9018C244.167 44.9018 268.583 35.9214 280.792 31.4312L293 26.9411V0H280.792C268.583 0 244.167 0 219.75 0C195.333 0 170.917 0 146.5 0C122.083 0 97.6667 0 73.25 0C48.8333 0 24.4167 0 12.2083 0H0V67.3527Z"
+                        fill={card.color}
+                      />
+                    </svg>
                   </div>
-                </article>
-              );
-            })}
-          </Slider>
+                </div>
+              </article>
+            );
+          })}
+        </Slider>
+        {window.innerWidth < 994 && props.step === 1 ? (
           <button
             className="btn--small"
-            onClick={(e) => props.nextStep(2)}
+            onClick={(e) =>
+              props.nextStep([
+                {
+                  key: "color",
+                  value: cardInfos["color"],
+                },
+                {
+                  key: "img",
+                  value: cardInfos["name"],
+                },
+              ])
+            }
             disabled={selectedCard === ""}
           >
             Next step
           </button>
-        </div>
-      ) : (
-        <Result cardInfo={props.cardInfo} infos={cardInfos} />
-      )}
+        ) : (
+          ""
+        )}
+
+        {window.innerWidth > 996 && props.step === 1 ? (
+          <button
+            className="btn--small"
+            onClick={(e) =>
+              props.nextStep([
+                {
+                  key: "color",
+                  value: cardInfos["color"],
+                },
+                {
+                  key: "img",
+                  value: cardInfos["name"],
+                },
+              ])
+            }
+            disabled={selectedCard === ""}
+          >
+            Next step
+          </button>
+        ) : (
+          ""
+        )}
+      </div>
     </div>
   );
 }
-
-const cssstyle = `
-h3 {
-    background: #5f9ea0;
-    color: #fff;
-    font-size: 36px;
-    line-height: 100px;
-    margin: 10px;
-    padding: 2%;
-    position: relative;
-    text-align: center;
-}
-.slick-next:before, .slick-prev:before {
-    color: #000;
-}
-`;

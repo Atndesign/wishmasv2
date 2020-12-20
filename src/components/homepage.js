@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 import gsap from "gsap";
 
 const HomePage = () => {
@@ -11,14 +11,14 @@ const HomePage = () => {
       delay: 1,
       ease: "sine",
       opacity: 0,
-    }); //wait 1 second
+    });
     gsap.from(".button-container", {
       y: 200,
       duration: 2,
       delay: 1,
       ease: "sine",
       opacity: 0,
-    }); //wait 1 second
+    });
   }, []);
 
   return (
@@ -30,7 +30,7 @@ const HomePage = () => {
               className="homepage__img"
               src="./img/christmas-tree.png"
               alt="Tree"
-              srcset="./img/christmas-tree.svg"
+              srcSet="./img/christmas-tree.svg"
             />
             <div className="left__content">
               <h1 className="homepage__title">Christmas</h1>
